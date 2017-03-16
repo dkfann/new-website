@@ -13,7 +13,7 @@
     font-size: 4rem;
     margin: 1rem;
 
-    font-family: 'Space Mono';
+    font-family: 'Roboto Mono';
 }
 
 .c-title{
@@ -42,5 +42,13 @@
 .c-panel__photo {
     width: 500px;
     height: 500px;
-    background-color: red;
+    background-color: #D1DBBD;
+    cursor: pointer;
+}
+
+.c-panel__desc {
+    position: relative;
+    top: 70%;
+    text-align: center;
+    opacity: 0;
 }
