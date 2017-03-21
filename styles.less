@@ -1,0 +1,177 @@
+@font-face { font-family: Verlag-Bold; src: url('Verlag-Bold.otf'); }
+@font-face { font-family: Verlag-Light; src: url('Verlag-Light.otf'); }
+
+.body {
+    margin: 0;
+}
+
+.o-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    margin: 1rem;
+
+    font-family: 'Roboto Mono';
+}
+
+.c-title{
+    font-size: 4rem;
+}
+
+.c-title--job {
+    font-family: 'Space Mono';
+    font-size: 2rem;
+}
+
+.o-showcase-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+
+    // justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+}
+
+.c-panel {
+    // flex: 1 0 30%;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.c-panel__photo {
+    width: 500px;
+    height: 500px;
+    background-color: #FFFAE4;
+    cursor: pointer;
+}
+
+.c-panel__photo {
+    perspective: 1000px;
+    // transform-style: preserve-3d;
+    display: block;
+    text-align: center;
+    position: relative;
+
+    &.is-hovered {
+        &:before {
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        @keyframes slide-fwd {
+            0% { 
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                opacity: 0;
+            }
+            100% {
+                -webkit-transform: translateZ(200px);
+                transform: translateZ(200px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-back {
+            0% { 
+                -webkit-transform: translateZ(200px);
+                transform: translateZ(200px);
+                opacity: 1;
+            }
+            100% {
+                -webkit-transform: translateZ(0px);
+                transform: translateZ(0px);
+                opacity: 0;
+            }
+        }
+
+        .c-panel__initial {
+            text-transform: uppercase;
+            font-size: 8rem;
+            animation: slide-fwd 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+    }
+
+    .c-panel__desc {
+        position: relative;
+        font-size: 3rem;
+        top: 70%;
+        text-align: center;
+        opacity: 0;
+    }
+
+    .c-panel__initial {
+        text-transform: uppercase;
+        font-size: 8rem;
+        opacity: 0;
+        animation: slide-back 0.5s 
+    }
+}
+#recon-panel {
+    background-color: #FFD34E;
+}
+
+#rfid-panel {
+    background-color: #EF3F48;
+}
+
+#photo-panel {
+    background-color: #6D8BBF;
+}
+
+#sdl-panel {
+    background-color: #B1C9BC;
+}
+
+#react-panel {
+    background-color: #BDD684;
+}
+
+.background-photo {
+    background-size: 70%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s;
+}
+
+#rfid-panel::before {
+    background-image: url('./rfid.png');
+    .background-photo();
+}
+
+#recon-panel::before {
+    background-image: url('./3d.png');
+    .background-photo();
+}
+
+#photo-panel::before {
+    background-image: url('./cam.png');
+    .background-photo();
+}
+
+#ai-panel::before {
+    background-image: url('./brain.png');
+    .background-photo();
+}
+
+#sdl-panel::before {
+    background-image: url('./sdl.png');
+    .background-photo();
+}
+
+#react-panel::before {
+    background-image: url('./react.png');
+    .background-photo();
+}

@@ -46,9 +46,22 @@
     cursor: pointer;
 }
 
-.c-panel__desc {
-    position: relative;
-    top: 70%;
-    text-align: center;
-    opacity: 0;
+
+
+.c-panel__photo {
+    &.is-hovered {
+        .c-panel__desc {
+            -webkit-animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            -moz-animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+            animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+    }
+
+    .c-panel__desc {
+        position: relative;
+        top: 70%;
+        text-align: center;
+        opacity: 0;
+        transition: 0.5s;
+    }
 }
