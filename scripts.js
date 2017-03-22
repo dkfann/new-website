@@ -37,4 +37,12 @@ $(() => {
             ease: Cubic.easeInOut,
         });
     });
+
+    $('.c-panel__photo').on('click', event => {
+        $(event.currentTarget).toggleClass('is-selected');
+        $('.c-panel__photo')
+            .not($(event.currentTarget))
+            .parents('.c-panel')
+            .addClass('is-hidden');
+    });
 })
