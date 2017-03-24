@@ -1,17 +1,18 @@
 @font-face { font-family: Verlag-Bold; src: url('Verlag-Bold.otf'); }
 @font-face { font-family: Verlag-Light; src: url('Verlag-Light.otf'); }
 
-.body {
+body {
     margin: 0;
 }
 
 .o-container {
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: center;
     align-items: center;
     font-size: 4rem;
-    margin: 1rem;
+    // margin: 1rem;
 
     font-family: 'Roboto Mono';
 }
@@ -189,8 +190,8 @@
   100% {
     transform: translateX(100%) translateZ(160px) rotateY(-180deg);
     transform-origin: 0% 50%;
-    width: 100vw;
-    height: 100vh;
+    // width: 100vw;
+    // height: 100vh;
   }
 }
 
@@ -203,4 +204,52 @@
 .is-hidden {
     opacity: 0;
     transition: 1s;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-in-left
+ * ----------------------------------------
+ */
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        // transform: translateX(0);
+        background-color: green;
+    }
+    100% {
+        background-color: blue;
+        // transform: translateX(-100vw);
+    }
+}
+
+.c-showcase-detail--left {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    background-color: red;
+    z-index: 1;
+    // animation: slide-in-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    // transform: translateX(500px);
+    // transition: left 1s linear;
+
+    &.is-active {
+        // left: 100px;
+        // transition: 2s;
+        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+}
+
+.c-close {
+    cursor: pointer;
 }
