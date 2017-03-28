@@ -3,6 +3,7 @@
 
 body {
     margin: 0;
+    letter-spacing: -0.1rem;
 }
 
 .o-container {
@@ -12,26 +13,34 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 4rem;
-    // margin: 1rem;
 
     font-family: 'Roboto Mono';
 }
 
+.c-self-info {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    // margin-left: 13rem;
+    margin-top: 2rem;
+}
+
 .c-title{
+    font-family: 'Roboto';
     font-size: 4rem;
+    font-weight: 700;
 }
 
 .c-title--job {
-    font-family: 'Space Mono';
+    font-family: 'Roboto';
     font-size: 2rem;
+    font-weight: 300;
 }
 
 .o-showcase-container {
     display: flex;
     flex-direction: row;
     margin-top: 3rem;
-
-    // justify-content: space-between;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -40,7 +49,6 @@ body {
 }
 
 .c-panel {
-    // flex: 1 0 30%;
     margin-bottom: 2rem;
     margin-right: 2rem;
 }
@@ -53,8 +61,7 @@ body {
 }
 
 .c-panel__photo {
-    perspective: 1000px;
-    // transform-style: preserve-3d;
+    perspective: 1500px;
     display: block;
     text-align: center;
     position: relative;
@@ -66,27 +73,23 @@ body {
         }
 
         @keyframes slide-fwd {
-            0% { 
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
+            0% {
+                font-size: 4rem;
                 opacity: 0;
             }
             100% {
-                -webkit-transform: translateZ(200px);
-                transform: translateZ(200px);
+                font-size: 8rem;
                 opacity: 1;
             }
         }
 
         @keyframes slide-back {
-            0% { 
-                -webkit-transform: translateZ(200px);
-                transform: translateZ(200px);
+            0% {
+                font-size: 8rem;
                 opacity: 1;
             }
             100% {
-                -webkit-transform: translateZ(0px);
-                transform: translateZ(0px);
+                font-size: 4rem;
                 opacity: 0;
             }
         }
@@ -115,22 +118,72 @@ body {
 }
 #recon-panel {
     background-color: #FFD34E;
+    
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#BD910D, 15%);
+    }
 }
 
 #rfid-panel {
     background-color: #EF3F48;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#AA0810, 15%);
+    }
 }
 
 #photo-panel {
     background-color: #6D8BBF;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#30528D, 15%);
+    }
 }
 
 #sdl-panel {
     background-color: #B1C9BC;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#5C9376, 15%);
+    }
 }
 
 #react-panel {
     background-color: #BDD684;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#71902D, 15%);
+    }
+}
+
+#about-panel {
+    background-color: #464646;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: #FFFFFF;
+    }
+}
+
+#ai-panel {
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#BAB97D, 15%);
+    }
+}
+
+#foodies-panel {
+    background-color: #FFAB45;
+
+    .c-panel__desc,
+    .c-panel__initial {
+        color: darken(#FB8A00, 15%);
+    }
 }
 
 .background-photo {
@@ -177,28 +230,14 @@ body {
     .background-photo();
 }
 
-/**
- * ----------------------------------------
- * animation flip-2-ver-right-fwd
- * ----------------------------------------
- */
-@keyframes flip-2-ver-right-fwd {
-  0% {
-    transform: translateX(0) translateZ(0) rotateY(0);
-    transform-origin: 100% 50%;
-  }
-  100% {
-    transform: translateX(100%) translateZ(160px) rotateY(-180deg);
-    transform-origin: 0% 50%;
-    // width: 100vw;
-    // height: 100vh;
-  }
+#about-panel::before {
+    background-image: url('./glasses-w.png');
+    .background-photo();
 }
 
-.is-selected {
-    // -webkit-animation: flip-2-ver-right-fwd 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    // -moz-animation: flip-2-ver-right-fwd 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    animation: flip-2-ver-right-fwd 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+#foodies-panel::before {
+    background-image: url('./burger-fries.png');
+    .background-photo();
 }
 
 .is-hidden {
@@ -206,28 +245,12 @@ body {
     transition: 1s;
 }
 
-/**
- * ----------------------------------------
- * animation slide-in-left
- * ----------------------------------------
- */
 @keyframes slide-in-left {
     0% {
         transform: translateX(0);
     }
     100% {
         transform: translateX(100vw);
-    }
-}
-
-@keyframes slide-in-right {
-    0% {
-        // transform: translateX(0);
-        background-color: green;
-    }
-    100% {
-        background-color: blue;
-        // transform: translateX(-100vw);
     }
 }
 
@@ -239,17 +262,44 @@ body {
     left: -100vw;
     background-color: red;
     z-index: 1;
-    // animation: slide-in-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    // transform: translateX(500px);
-    // transition: left 1s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &.is-active {
-        // left: 100px;
-        // transition: 2s;
         animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 }
 
 .c-close {
+    cursor: pointer;
+    align-self: flex-start;
+    margin: 3rem 0 0 3rem;
+    position: absolute;
+    top: 0;
+}
+
+.c-showcase-detail__info {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    max-width: 30vw;
+}
+
+.c-showcase-detail__info-title {
+    color: black;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.c-showcase-detail__info-text {
+    font-size: 2rem;
+    text-align: left;
+}
+
+.c-showcase-detail__github {
+    margin-top: 2rem;
+    align-self: center;
     cursor: pointer;
 }
