@@ -1,9 +1,17 @@
 $(() => {
     let activeDetailPanel = '';
-    const pos = $('#recon-panel').position();
-    $('.c-self-info').css({
-        marginLeft: `${pos.left}px`,
-    });
+    handleSelfInfoPosition();
+
+    $(window).on('resize', () => {
+        handleSelfInfoPosition();
+    })
+
+    function handleSelfInfoPosition() {
+        const pos = $('#recon-panel').position();
+        $('.c-self-info').css({
+            marginLeft: `${pos.left}px`,
+        });
+    }
 
     const panelData = {
         rfid: {
@@ -42,7 +50,7 @@ $(() => {
         },
         foodies: {
             title: 'Foodies',
-            text: 'A foodies app',
+            text: 'A restaurant sharing app that helps friends share and discover a curated assortment of places to eat and hang out at. Created with React, React Router, Webpack, and Babel.',
         },
     }
     // CSS Only Approach - Revisit Later
@@ -77,6 +85,7 @@ $(() => {
 
     $('.c-panel__photo').on('click', event => {
         const elem = $('.c-showcase-detail--left');
+        if (elem.find('.c-showcase-detail__info').length) return;
         const panelBgColor = $(event.currentTarget).css('background-color');
         const id = $(event.currentTarget).get(0).id;
         const panelName = id.split('-')[0];
@@ -113,9 +122,14 @@ $(() => {
             backgroundColor: panelBgColor,
         });
 
-        if (panelAltCol) {
-            elem.css({
+        if (panelName === 'about') {
+            $('.c-showcase-detail--left').css({
                 color: '#FFF',
+            });
+        }
+        else {
+            $('.c-showcase-detail--left').css({
+                color: '#000',
             });
         }
 
@@ -126,10 +140,6 @@ $(() => {
 
         activeDetailPanel = 'left';
     });
-
-    function _getInfoToShowFromPanelName({ info }) {
-
-    }
 
     $('.c-close').on('click', event => {
         if (activeDetailPanel === 'left') {
@@ -144,7 +154,14 @@ $(() => {
         }
     });
 
+    function _getInfoToShowFromPanelName({ info }) {
+
+    }
+
+
+
     function _removeDetails(elem) {
+        console.log('Details have been removed');
         elem.find('.c-showcase-detail__info').remove();
     }
 })
