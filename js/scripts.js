@@ -1,5 +1,7 @@
 $(() => {
     let activeDetailPanel = '';
+    let pswpGallery = null;
+
     handleSelfInfoPosition();
 
     $(window).on('resize', () => {
@@ -13,6 +15,44 @@ $(() => {
         });
     }
 
+    function initGallery({ index }) {
+        const gallery = [
+            {
+                src: '../resources/images/kb.jpg',
+                w: 1000,
+                h: 667,
+            },
+            {
+                src: '../resources/images/peppermint.jpg',
+                w: 1000,
+                h: 563,
+            },
+            {
+                src: '../resources/images/beach.jpg',
+                w: 1000,
+                h: 663,
+            },
+            {
+                src: '../resources/images/car.jpg',
+                w: 1000,
+                h: 663,
+            },
+            {
+                src: '../resources/images/dance.jpg',
+                w: 1000,
+                h: 663,
+            },
+        ];
+
+        const pswpElem = $('.pswp').get(0);
+        const pswpOpts = {
+            closeOnScroll: false,
+            index,
+        };
+
+        pswpGallery = new PhotoSwipe(pswpElem, PhotoSwipeUI_Default, gallery, pswpOpts);
+    }
+
     const panelData = {
         rfid: {
             title: 'RFID Electric Strike Lock',
@@ -21,17 +61,36 @@ $(() => {
         },
         recon: {
             title: '3D Mesh Reconstruction With Structured Lighting',
-            text: 'Recreated a 3D model of a mannequin from structured lighting image scans of the mannequin. The images were placed in a stack and the binary gray code values were collapsed into an array of decoded decimal values per pixel. This array was then used to reconstruct a point cloud, which was converted into a mesh and smoothed with Poisson reconstruction. ',
+            text: 'Recreated a 3D model of a mannequin from structured lighting image scans of the mannequin. The images were placed in a stack and the binary gray code values were collapsed into an array of decoded decimal values per pixel. This array was then used to reconstruct a point cloud, which was converted into a mesh and smoothed with Poisson reconstruction.',
             github: 'https://github.com/dkfann/3D-Reconstruct',
         },
         photo: {
             title: 'Photography',
-            text: 'Some of my photographs.',
+            text: '',
+            gallery: `
+                <div class="c-showcase-detail__gallery">
+                    <div class="c-showcase-detail__gallery-photo" data-id="0">
+                        <img src="../resources/images/kb-t.jpg" />
+                    </div>
+                    <div class="c-showcase-detail__gallery-photo" data-id="1">
+                        <img src="../resources/images/peppermint-t.jpg" />
+                    </div>
+                    <div class="c-showcase-detail__gallery-photo" data-id="2">
+                        <img src="../resources/images/beach-t.jpg" />
+                    </div>
+                    <div class="c-showcase-detail__gallery-photo" data-id="3">
+                        <img src="../resources/images/car-t.jpg" />
+                    </div>
+                    <div class="c-showcase-detail__gallery-photo" data-id="4">
+                        <img src="../resources/images/dance-t.jpg" />
+                    </div>
+                </div>
+            `,
         },
         about: {
             title: 'About Me',
-            text: 'Some info about me',
-            altCol: true,
+            text: 'Hey there! I\'m a software developer based in California. Software and technology have always intrigued me and captured my fascination, so I\'m always looking for ways to creatively solve problems through software!',
+            img: '../resources/images/danny-xs.png',
         },
         ai: {
             title: 'Connect-K AI',
@@ -93,7 +152,7 @@ $(() => {
         const panelTitle = panelData[panelName].title;
         const panelInfo = panelData[panelName].text;
         const panelGithub = panelData[panelName].github;
-        const panelAltCol = panelData[panelName].altCol;
+        const panelImg = panelData[panelName].img;
 
         elem.append(`
             <div class="c-showcase-detail__info">
@@ -109,7 +168,7 @@ $(() => {
         if (panelGithub) {
             $(`
                 <div class="c-showcase-detail__github">
-                    <img src="./github.png" alt="" data-url="${panelGithub}"/>
+                    <img src="../resources/icons/github.png" alt="" data-url="${panelGithub}"/>
                 </div>
             `).insertAfter('.c-showcase-detail__info-text');
 
@@ -118,9 +177,29 @@ $(() => {
             });
         }
 
+        if (panelImg) {
+            $(`
+                <div class="c-showcase-detail__img">
+                    <img src="${panelImg}"/>
+                <div>
+            `).insertBefore('.c-showcase-detail__info-text');
+        }
+
         elem.css({
             backgroundColor: panelBgColor,
         });
+
+        if (panelName === 'photo') {
+            const galleryMarkup = panelData[panelName].gallery;
+
+            $(galleryMarkup).insertAfter('.c-showcase-detail__info-title');
+
+            $('.c-showcase-detail__gallery-photo').on('click', event => {
+                const index = $(event.currentTarget).data('id');
+                initGallery({ index });
+                pswpGallery.init();
+            });
+        }
 
         if (panelName === 'about') {
             $('.c-showcase-detail--left').css({
@@ -157,8 +236,6 @@ $(() => {
     function _getInfoToShowFromPanelName({ info }) {
 
     }
-
-
 
     function _removeDetails(elem) {
         console.log('Details have been removed');

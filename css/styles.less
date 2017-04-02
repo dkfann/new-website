@@ -1,10 +1,9 @@
-@font-face { font-family: Verlag-Bold; src: url('Verlag-Bold.otf'); }
-@font-face { font-family: Verlag-Light; src: url('Verlag-Light.otf'); }
-
 body {
     margin: 0;
     letter-spacing: -0.1rem;
-    background-color: #FCFAE1;
+    // background-color: #FAEFD9;
+    background-color: #fcfcfc;
+    color: #225378;
 }
 
 .o-container {
@@ -25,7 +24,7 @@ body {
     margin-top: 2rem;
 }
 
-.c-title{
+.c-title {
     font-family: 'Roboto';
     font-size: 4rem;
     font-weight: 700;
@@ -35,6 +34,24 @@ body {
     font-family: 'Roboto';
     font-size: 2rem;
     font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.c-self__contact-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.c-self__contact {
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+
+    a {
+        color: #225378;
+        text-decoration: none;
+    }
 }
 
 .o-showcase-container {
@@ -117,7 +134,7 @@ body {
 }
 #recon-panel {
     background-color: #FFD34E;
-    
+
     .c-panel__desc,
     .c-panel__initial {
         color: darken(#BD910D, 15%);
@@ -202,42 +219,42 @@ body {
 }
 
 #rfid-panel::before {
-    background-image: url('./rfid.png');
+    background-image: url('../resources/icons/rfid.png');
     .background-photo();
 }
 
 #recon-panel::before {
-    background-image: url('./3d.png');
+    background-image: url('../resources/icons/3d.png');
     .background-photo();
 }
 
 #photo-panel::before {
-    background-image: url('./cam.png');
+    background-image: url('../resources/icons/cam.png');
     .background-photo();
 }
 
 #ai-panel::before {
-    background-image: url('./brain.png');
+    background-image: url('../resources/icons/brain.png');
     .background-photo();
 }
 
 #sdl-panel::before {
-    background-image: url('./sdl.png');
+    background-image: url('../resources/icons/sdl.png');
     .background-photo();
 }
 
 #react-panel::before {
-    background-image: url('./react.png');
+    background-image: url('../resources/icons/react.png');
     .background-photo();
 }
 
 #about-panel::before {
-    background-image: url('./glasses-w.png');
+    background-image: url('../resources/icons/glasses-w.png');
     .background-photo();
 }
 
 #foodies-panel::before {
-    background-image: url('./burger-fries.png');
+    background-image: url('../resources/icons/burger-fries.png');
     .background-photo();
 }
 
@@ -289,7 +306,8 @@ body {
 
 .c-showcase-detail__info-title {
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .c-showcase-detail__info-text {
@@ -299,6 +317,21 @@ body {
 
 .c-showcase-detail__github {
     margin-top: 2rem;
+    align-self: center;
+    cursor: pointer;
+}
+
+.c-showcase-detail__img {
+    align-self: center;
+}
+
+.c-showcase-detail__gallery {
+    display: flex;
+    flex-direction: row;
+}
+
+.c-showcase-detail__gallery-photo {
+    margin-left: 1rem;
     align-self: center;
     cursor: pointer;
 }
