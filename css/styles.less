@@ -6,6 +6,10 @@ body {
     color: #225378;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 .o-container {
     display: flex;
     flex-direction: column;
@@ -204,7 +208,8 @@ body {
     }
 }
 
-.background-photo {
+.background-photo(@bg-url: '') {
+    background-image: url(@bg-url);
     background-size: 70%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -219,43 +224,35 @@ body {
 }
 
 #rfid-panel::before {
-    background-image: url('../resources/icons/rfid.png');
-    .background-photo();
+    .background-photo('../resources/icons/rfid.png');
 }
 
 #recon-panel::before {
-    background-image: url('../resources/icons/3d.png');
-    .background-photo();
+    .background-photo('../resources/icons/3d.png');
 }
 
 #photo-panel::before {
-    background-image: url('../resources/icons/cam.png');
-    .background-photo();
+    .background-photo('../resources/icons/cam.png');
 }
 
 #ai-panel::before {
-    background-image: url('../resources/icons/brain.png');
-    .background-photo();
+    .background-photo('../resources/icons/brain.png');
 }
 
 #sdl-panel::before {
-    background-image: url('../resources/icons/sdl.png');
-    .background-photo();
+    .background-photo('../resources/icons/sdl.png');
 }
 
 #react-panel::before {
-    background-image: url('../resources/icons/react.png');
-    .background-photo();
+    .background-photo('../resources/icons/react.png');
 }
 
 #about-panel::before {
-    background-image: url('../resources/icons/glasses-w.png');
-    .background-photo();
+    .background-photo('../resources/icons/glasses-w.png');
 }
 
 #foodies-panel::before {
-    background-image: url('../resources/icons/burger-fries.png');
-    .background-photo();
+    .background-photo('../resources/icons/burger-fries.png');
 }
 
 .is-hidden {
@@ -304,6 +301,10 @@ body {
     max-width: 1200px;
 }
 
+.is-photo-panel {
+    max-width: 100%;
+}
+
 .c-showcase-detail__info-title {
     font-weight: 700;
     margin-bottom: 1rem;
@@ -328,6 +329,9 @@ body {
 .c-showcase-detail__gallery {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 2rem;
 }
 
 .c-showcase-detail__gallery-photo {

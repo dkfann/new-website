@@ -1,67 +1,355 @@
-@font-face { font-family: Verlag-Bold; src: url('Verlag-Bold.otf'); }
-@font-face { font-family: Verlag-Light; src: url('Verlag-Light.otf'); }
-
-.body {
-    margin: 0;
+body {
+  margin: 0;
+  letter-spacing: -0.1rem;
+  background-color: #fcfcfc;
+  color: #225378;
 }
-
+.no-scroll {
+  overflow: hidden;
+}
 .o-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
-    margin: 1rem;
-
-    font-family: 'Roboto Mono';
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-family: 'Roboto Mono';
 }
-
-.c-title{
-    font-size: 4rem;
+.c-self-info {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 2rem;
 }
-
+.c-title {
+  font-family: 'Roboto';
+  font-size: 4rem;
+  font-weight: 700;
+}
 .c-title--job {
-    font-family: 'Space Mono';
-    font-size: 2rem;
+  font-family: 'Roboto';
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
 }
-
+.c-self__contact-container {
+  display: flex;
+  flex-direction: row;
+}
+.c-self__contact {
+  font-family: 'Roboto';
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.c-self__contact a {
+  color: #225378;
+  text-decoration: none;
+}
 .o-showcase-container {
-    display: flex;
-    flex-direction: row;
-
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
-
 .c-panel {
-    flex: 1 0 30%;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
 }
-
 .c-panel__photo {
-    width: 500px;
-    height: 500px;
-    background-color: #D1DBBD;
-    cursor: pointer;
+  width: 500px;
+  height: 500px;
+  cursor: pointer;
 }
-
-
-
 .c-panel__photo {
-    &.is-hovered {
-        .c-panel__desc {
-            -webkit-animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-            -moz-animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-            animation: slide-top 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-        }
-    }
-
-    .c-panel__desc {
-        position: relative;
-        top: 70%;
-        text-align: center;
-        opacity: 0;
-        transition: 0.5s;
-    }
+  perspective: 1500px;
+  display: block;
+  text-align: center;
+  position: relative;
+}
+.c-panel__photo.is-hovered:before {
+  opacity: 0;
+  transition: 0.5s;
+}
+@keyframes slide-fwd {
+  0% {
+    font-size: 4rem;
+    opacity: 0;
+  }
+  100% {
+    font-size: 8rem;
+    opacity: 1;
+  }
+}
+@keyframes slide-back {
+  0% {
+    font-size: 8rem;
+    opacity: 1;
+  }
+  100% {
+    font-size: 4rem;
+    opacity: 0;
+  }
+}
+.c-panel__photo.is-hovered .c-panel__initial {
+  text-transform: uppercase;
+  font-size: 8rem;
+  animation: slide-fwd 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.c-panel__photo .c-panel__desc {
+  position: relative;
+  font-size: 3rem;
+  top: 70%;
+  text-align: center;
+  opacity: 0;
+}
+.c-panel__photo .c-panel__initial {
+  text-transform: uppercase;
+  font-size: 8rem;
+  opacity: 0;
+  animation: slide-back 0.5s;
+}
+#recon-panel {
+  background-color: #FFD34E;
+}
+#recon-panel .c-panel__desc,
+#recon-panel .c-panel__initial {
+  color: #755a08;
+}
+#rfid-panel {
+  background-color: #EF3F48;
+}
+#rfid-panel .c-panel__desc,
+#rfid-panel .c-panel__initial {
+  color: #610509;
+}
+#photo-panel {
+  background-color: #6D8BBF;
+}
+#photo-panel .c-panel__desc,
+#photo-panel .c-panel__initial {
+  color: #1d3154;
+}
+#sdl-panel {
+  background-color: #B1C9BC;
+}
+#sdl-panel .c-panel__desc,
+#sdl-panel .c-panel__initial {
+  color: #3f6450;
+}
+#react-panel {
+  background-color: #BDD684;
+}
+#react-panel .c-panel__desc,
+#react-panel .c-panel__initial {
+  color: #43561b;
+}
+#about-panel {
+  background-color: #464646;
+}
+#about-panel .c-panel__desc,
+#about-panel .c-panel__initial {
+  color: #FFFFFF;
+}
+#ai-panel {
+  background-color: #F6E497;
+}
+#ai-panel .c-panel__desc,
+#ai-panel .c-panel__initial {
+  color: #999851;
+}
+#foodies-panel {
+  background-color: #FFAB45;
+}
+#foodies-panel .c-panel__desc,
+#foodies-panel .c-panel__initial {
+  color: #af6000;
+}
+#rfid-panel::before {
+  background-image: url('../resources/icons/rfid.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#recon-panel::before {
+  background-image: url('../resources/icons/3d.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#photo-panel::before {
+  background-image: url('../resources/icons/cam.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#ai-panel::before {
+  background-image: url('../resources/icons/brain.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#sdl-panel::before {
+  background-image: url('../resources/icons/sdl.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#react-panel::before {
+  background-image: url('../resources/icons/react.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#about-panel::before {
+  background-image: url('../resources/icons/glasses-w.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+#foodies-panel::before {
+  background-image: url('../resources/icons/burger-fries.png');
+  background-size: 70%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+}
+.is-hidden {
+  opacity: 0;
+  transition: 1s;
+}
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+.c-showcase-detail--left {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: -100vw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.c-showcase-detail--left.is-active {
+  animation: slide-in-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.c-close {
+  cursor: pointer;
+  align-self: flex-start;
+  margin: 3rem 0 0 3rem;
+  position: absolute;
+  top: 0;
+}
+.c-showcase-detail__info {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  max-width: 1200px;
+}
+.is-photo-panel {
+  max-width: 100%;
+}
+.c-showcase-detail__info-title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.c-showcase-detail__info-text {
+  font-size: 2rem;
+  text-align: left;
+}
+.c-showcase-detail__github {
+  margin-top: 2rem;
+  align-self: center;
+  cursor: pointer;
+}
+.c-showcase-detail__img {
+  align-self: center;
+}
+.c-showcase-detail__gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 2rem;
+}
+.c-showcase-detail__gallery-photo {
+  margin-left: 1rem;
+  align-self: center;
+  cursor: pointer;
 }
